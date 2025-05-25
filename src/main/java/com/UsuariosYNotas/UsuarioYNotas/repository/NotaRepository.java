@@ -1,4 +1,11 @@
 package com.UsuariosYNotas.UsuarioYNotas.repository;
 
-public interface NotaRepository {
+import com.UsuariosYNotas.UsuarioYNotas.model.Nota;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface NotaRepository extends JpaRepository<Nota, Long> {
+    List<Nota> findByUsuarioId(Long usuarioID, Sort sort);
 }
