@@ -3,39 +3,42 @@ package com.UsuariosYNotas.UsuarioYNotas.service;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class AbstractCrudService implements CrudService<Entidad, Long> {
+import java.util.List;
+import java.util.Optional;
+
+public abstract class AbstractCrudService<T> implements CrudService_Repository<T, Long> {
 
     //Atributos
-    protected final JpaRepository<Entidad,Long> repository;
+    protected final JpaRepository<T,Long> repository;
 
     //CONSTRUCTOR
-    protected AbstractCrudService(JpaRepository<Entidad,Long> repository){
+    protected AbstractCrudService(JpaRepository<T,Long> repository){
         this.repository = repository;
     }
 
     @Override
-    public List<Entidad> getAll(){
+    public List<T> getAll(){
         return repository.findAll();
     }
 
     @Override
-    public Optional<Entidad> getById(Long id){
+    public Optional<T> getById(Long id){
         return repository.findById(id);
     }
 
     @Override
-    public Entidad save(Entidad entidad){
+    public T save(T entidad){
         return repository.save(entidad);
     }
 
     @Override
-    public Entidad update(Long id, Entidad entidad){
+    public T update(Long id, T entidad){
         //Compruebo que la entidad existe previamente
         if(!repository.existsById(id)){
             throw new IllegalArgumentException("No existe previamente la entidad con el ID "+id);
         }
         //Extraigo la entidad que ya existe
-        Entidad existente = repository.findById(id).orElseThrow();
+        T existente = repository.findById(id).orElseThrow();
         //Paso todos los atributos del objeto entrante al existente, sin modificar el id
         BeanUtils.copyProperties(entidad, existente, "id");
         //Guardo el objeto con las nuevas características

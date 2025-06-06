@@ -1,22 +1,22 @@
-package com.UsuariosYNotas.UsuarioYNotas.repository;
+package com.UsuariosYNotas.UsuarioYNotas.service;
 
 import java.util.List;
 import java.util.Optional;
 
 //Será una interfaz "general" que aplicaremos en nuestro sistema cuando no se requieran especificaciones
-public interface CrudService_Repository<Entidad, Long> {
+public interface CrudService_Repository<T, Long> {
 
     //GET Todos
-    List<Entidad> getAll();
+    List<T> getAll();
 
     //GET por Id
-    Optional<Entidad> getById(Long id);
+    Optional<T> getById(Long id);
 
     //POST
-    Entidad save(Entidad entidad);
+    T save(T entidad);
 
     //PUT
-    Entidad update(Long id, Entidad entidad);
+    T update(Long id, T entidad);
 
     //DELETE
     void deleteById(Long id);
