@@ -2,11 +2,15 @@ package com.UsuariosYNotas.UsuarioYNotas.controller;
 
 import com.UsuariosYNotas.UsuarioYNotas.model.Usuario;
 import com.UsuariosYNotas.UsuarioYNotas.service.UsuarioService;
+import com.UsuariosYNotas.UsuarioYNotas.service.passService;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
+
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +23,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class UsuarioControllerV2 {
 
     private final UsuarioService usuarioService;
+    private final passService pService;
 
-    public UsuarioControllerV2(UsuarioService usuarioService){
+    public UsuarioControllerV2(UsuarioService usuarioService, passService pService){
         this.usuarioService = usuarioService;
+        this.pService = pService;
     }
 
     @PostMapping("/sign-in")
-    public ResponseEntity<Usuario> signIn(@Valid @RequestBody SignIn signIn) {
-        Usuario usuario = new Usuario();
-        usuario.setEmail(signIn.getemail());
-        usuario.setpasswordHash(signIn.getPassword());
+    public ResponseEntity<String> signIn(@Valid @RequestBody SignIn signIn) {
+        Optional<Usuario> usuarioOptional = usuarioService.findByEmail(signIn.getemail());
 
-        Usuario creado = usuarioService.registrarUsuario(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(creado);
+        if (usuarioOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encuentra el usuario seleccionado");
+        }
+
+        Usuario usuario = usuarioOptional.get();
+
+        boolean esIgual = pService.verificarUsuario(signIn.getPassword(), usuario.getpasswordHash());
+
+        if (!esIgual) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuario o contraseña incorrectos");
+        }
+
+        return ResponseEntity.ok("Usuario logeado exitosamente");
     }
     
 }

@@ -2,7 +2,6 @@ package com.UsuariosYNotas.UsuarioYNotas.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.Valid;
-
 import com.UsuariosYNotas.UsuarioYNotas.model.Usuario;
 import com.UsuariosYNotas.UsuarioYNotas.service.UsuarioService;
 
@@ -23,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/usuarios")
-@Validated
 public class UsuarioControllerV1 {
 
     //ATRIBUTOS
@@ -39,7 +34,7 @@ public class UsuarioControllerV1 {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public void getUsuarioId(@PathVariable("id") Long id) {
+    public void getUsuarioId(Long id) {
         usuarioService.findById(id);
     }
 

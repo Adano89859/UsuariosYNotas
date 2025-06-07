@@ -6,13 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractCrudService<T> implements CrudService_Repository<T, Long> {
+public abstract class AbstractCrudService<T, ID> implements CrudService_Repository<T, ID> {
 
     //Atributos
-    protected final JpaRepository<T,Long> repository;
+    protected final JpaRepository<T,ID> repository;
 
     //CONSTRUCTOR
-    protected AbstractCrudService(JpaRepository<T,Long> repository){
+    protected AbstractCrudService(JpaRepository<T,ID> repository){
         this.repository = repository;
     }
 
@@ -22,7 +22,7 @@ public abstract class AbstractCrudService<T> implements CrudService_Repository<T
     }
 
     @Override
-    public Optional<T> getById(Long id){
+    public Optional<T> getById(ID id){
         return repository.findById(id);
     }
 
@@ -32,7 +32,7 @@ public abstract class AbstractCrudService<T> implements CrudService_Repository<T
     }
 
     @Override
-    public T update(Long id, T entidad){
+    public T update(ID id, T entidad){
         //Compruebo que la entidad existe previamente
         if(!repository.existsById(id)){
             throw new IllegalArgumentException("No existe previamente la entidad con el ID "+id);
@@ -46,7 +46,7 @@ public abstract class AbstractCrudService<T> implements CrudService_Repository<T
     }
 
     @Override
-    public void deleteById(Long id){
+    public void deleteById(ID id){
         repository.deleteById(id);
     }
 

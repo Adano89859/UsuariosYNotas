@@ -1,7 +1,5 @@
 package com.UsuariosYNotas.UsuarioYNotas.service;
 
-import com.UsuariosYNotas.UsuarioYNotas.service.UsuarioService;
-
 import jakarta.transaction.Transactional;
 
 import com.UsuariosYNotas.UsuarioYNotas.model.Usuario;
@@ -9,8 +7,7 @@ import com.UsuariosYNotas.UsuarioYNotas.repository.UsuarioRepository;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,16 +16,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
 public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> implements UsuarioService {
 
     //ATRIBUTOS
     private final UsuarioRepository usuarioRepository;
-    //Revisar
     private final passService pService;
 
     //CONSTRUCTOR
     public UsuarioServiceImpl(UsuarioRepository usuarioRepository, passService pService){
+        super(usuarioRepository);
         this.usuarioRepository = usuarioRepository;
         this.pService = pService;
     }
@@ -59,8 +55,9 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
         usuarioRepository.deleteById(id);
     }
     
-    //REGISTRAR USUARIO (CONTROLLER V2)
+    //REGISTRAR USUARIO
     @Override
+    @Transactional
     public Usuario registrarUsuario(Usuario usuario){
         if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ya existe un usuario con este email");
@@ -78,6 +75,7 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
 
     //ACTUALIZAR USUARIO
     @Override
+    @Transactional
     public Usuario update(Long id, Usuario usuario){
 
         if (!usuarioRepository.existsById(id)) {

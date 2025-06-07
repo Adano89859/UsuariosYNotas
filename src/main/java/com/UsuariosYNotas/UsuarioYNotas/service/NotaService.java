@@ -1,13 +1,18 @@
 package com.UsuariosYNotas.UsuarioYNotas.service;
 
 import com.UsuariosYNotas.UsuarioYNotas.model.Nota;
+import com.UsuariosYNotas.UsuarioYNotas.model.Usuario;
 import com.UsuariosYNotas.UsuarioYNotas.repository.NotaRepository;
+import com.UsuariosYNotas.UsuarioYNotas.repository.UsuarioRepository;
+
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-public class NotaService extends AbstractCrudService{
+@Service
+public class NotaService extends AbstractCrudService<Nota, Long>{
 
     //Atributos
     private final NotaRepository notaRepository;
@@ -22,7 +27,7 @@ public class NotaService extends AbstractCrudService{
 
     public Nota updateNota(Nota updatedNota, Long id) {
         // Verificar si la Nota existe en la base de datos
-        Optional optionalNota = notaRepository.findById(id);
+        Optional<Nota> optionalNota = notaRepository.findById(id);
 
         //Paso de formato Opcional a formato Nota, si existe
         if(!optionalNota.isPresent()) {
