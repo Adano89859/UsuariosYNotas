@@ -24,13 +24,13 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
 
     //ATRIBUTOS
     private final UsuarioRepository usuarioRepository;
-    //Revisar (CONTROLLER V2)
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    //Revisar
+    private final passService pService;
 
     //CONSTRUCTOR
-    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder){
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, passService pService){
         this.usuarioRepository = usuarioRepository;
-        this.passwordEncoder = passwordEncoder;
+        this.pService = pService;
     }
 
     //LISTAR
@@ -58,6 +58,7 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
     public void deleteById(Long id){
         usuarioRepository.deleteById(id);
     }
+    
     //REGISTRAR USUARIO (CONTROLLER V2)
     @Override
     public Usuario registrarUsuario(Usuario usuario){
@@ -65,8 +66,8 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ya existe un usuario con este email");
         }
 
-        String HashedPassword = passwordEncoder.encode(usuario.getPassword());
-        usuario.setPassword(HashedPassword);
+        String HashedPassword = pService.hashPassword(usuario.getpasswordHash());
+        usuario.setpasswordHash(HashedPassword);
 
         if (usuario.getNotas() == null) {
             usuario.setNotas(new ArrayList<>());
@@ -74,6 +75,7 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
 
         return usuarioRepository.save(usuario);
     }
+
     //ACTUALIZAR USUARIO
     @Override
     public Usuario update(Long id, Usuario usuario){

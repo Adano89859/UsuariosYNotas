@@ -52,7 +52,7 @@ public class UsuarioControllerV1 {
     public ResponseEntity<Usuario> UpdateUsuario(@PathVariable Long id, @RequestBody Usuario nuevoUsuario){
         try {
             Usuario usuarioNuevo = usuarioService.update(id, nuevoUsuario);
-            return ResponseEntity.ok(nuevoUsuario);
+            return ResponseEntity.ok(usuarioNuevo);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
