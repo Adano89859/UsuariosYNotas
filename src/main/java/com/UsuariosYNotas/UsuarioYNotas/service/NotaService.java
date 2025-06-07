@@ -35,7 +35,7 @@ public class NotaService extends AbstractCrudService{
 
             // Aplicar las actualizaciones en el nota existente
             existingNota.setUsuario(updatedNota.getUsuario());
-            existingNota.setFechaCreación(updatedNota.getFechaCreación());
+            existingNota.setFechaCreacion(updatedNota.getFechaCreacion());
             existingNota.setContenido(updatedNota.getContenido());
             existingNota.setTitulo(updatedNota.getTitulo());
             existingNota.setId(updatedNota.getId());
