@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/nota")
+@RequestMapping("/api/v1/notas")
 public class NotaController {
 
     private final NotaService notaService;
@@ -31,8 +31,11 @@ public class NotaController {
     }
 
     @PostMapping
-    public Nota createNota(@RequestBody Nota nota) {
-        return (Nota) notaService.save(nota);
+    public Nota createNota(
+            @RequestParam Long usuarioId,
+            @RequestBody Nota nota) {
+
+        return (Nota) notaService.guardarNotaUsuario(usuarioId,nota);
     }
 
     @PutMapping("/{id}")
@@ -52,12 +55,14 @@ public class NotaController {
     }
 
     //GET de BUSCAR
-    @GetMapping("/buscarNotasUsuario")
-    public List<Nota> buscarNotasUsuario
-    (@RequestParam(defaultValue = "id") String sortBy,
-     @RequestParam(defaultValue = "asc") String orden){
+    @GetMapping("/buscarNotasPorUsuario")
+    public List<Nota> buscarNotasPorUsuario
+    (@RequestParam(required = false) Long usuarioId,
+     @RequestParam(defaultValue = "id") String sortBy,
+     @RequestParam(defaultValue = "asc") String orden
+     ){
 
-        return notaService.buscarNotas(titulo, anioPublicacion, sortBy, orden);
+        return notaService.buscarNotaSegunUsuario(usuarioId,sortBy,orden);
     }
 
 }

@@ -11,11 +11,13 @@ public class NotaService extends AbstractCrudService{
 
     //Atributos
     private final NotaRepository notaRepository;
+    private final UsuarioRepository usuarioRepository;
 
     //COSNTRUCTOR
-    public  NotaService(NotaRepository notaRepository){
+    public  NotaService(NotaRepository notaRepository,UsuarioRepository usuarioRepository){
         super(notaRepository);
         this.notaRepository = notaRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public Nota updateNota(Nota updatedNota, Long id) {
@@ -66,6 +68,25 @@ public class NotaService extends AbstractCrudService{
 
         //Saco las notas que tenga el usuario
         return notaRepository.findByUsuarioId(usuarioId,mostrarOrden);
+    }
+
+    //Método que guarda la nota para un Usuario concreto
+    public Nota guardarNotaUsuario(Long usuarioId, Nota nota){
+
+        //Compruebo que el usuario existe
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(usuarioId);
+        if(optionalUsuario.isPresent()){
+            //Extraigo el Usuario del optional Usuario
+            Usuario usuario = optionalUsuario.get();
+            //Si el usuario existe, guardo la nota con asignación a su ID
+            nota.setUsuario(usuario);
+
+            return notaRepository.save(nota);
+        }else{
+            //Si no existe doy error
+            throw new IllegalArgumentException("El Usuario introducido no existe");
+        }
+
     }
 
 }
