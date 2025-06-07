@@ -2,6 +2,7 @@ package com.UsuariosYNotas.UsuarioYNotas.controller;
 
 import com.UsuariosYNotas.UsuarioYNotas.model.Nota;
 import com.UsuariosYNotas.UsuarioYNotas.service.NotaService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,13 +34,13 @@ public class NotaController {
     @PostMapping
     public Nota createNota(
             @RequestParam Long usuarioId,
-            @RequestBody Nota nota) {
+            @RequestBody @Valid Nota nota) {
 
         return (Nota) notaService.guardarNotaUsuario(usuarioId,nota);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Nota> updateNota(@PathVariable("id") Long id, @RequestBody Nota nota) {
+    public ResponseEntity<Nota> updateNota(@PathVariable("id") Long id, @RequestBody @Valid Nota nota) {
 
         try {
             Nota updated = notaService.updateNota(nota, id);
