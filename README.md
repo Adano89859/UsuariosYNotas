@@ -152,6 +152,7 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 * Registro, Log-in y hashing de contraseña de un usuario:
 ![image](https://github.com/user-attachments/assets/f2362566-1eda-405c-946c-a379f51415fa)
 
+
 # VALORACIÓN FINAL:
 En este proyecto hemos aprendido a implementar las funcionalidades intermedias y avanzadas de una API-REST con una conexión a una base de datos real,
 con validaciones y cifrado de datos, en general, el proyecto nos ha resultado satisfactorio, aunque hubo ciertas partes como la implementación del 
