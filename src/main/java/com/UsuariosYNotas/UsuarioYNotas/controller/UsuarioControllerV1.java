@@ -44,12 +44,12 @@ public class UsuarioControllerV1 {
     }
 
     @PostMapping
-    public Usuario crearUsuario(@RequestBody Usuario usuario){
+    public Usuario crearUsuario(@RequestBody @Valid Usuario usuario){
         return usuarioService.save(usuario);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> UpdateUsuario(@PathVariable Long id, @RequestBody Usuario nuevoUsuario){
+    public ResponseEntity<Usuario> UpdateUsuario(@PathVariable Long id, @RequestBody @Valid Usuario nuevoUsuario){
         try {
             Usuario usuarioNuevo = usuarioService.update(id, nuevoUsuario);
             return ResponseEntity.ok(usuarioNuevo);

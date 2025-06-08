@@ -1,7 +1,7 @@
 package com.UsuariosYNotas.UsuarioYNotas.controller;
 
 import com.UsuariosYNotas.UsuarioYNotas.model.Nota;
-import com.UsuariosYNotas.UsuarioYNotas.service.NotaService;
+import com.UsuariosYNotas.UsuarioYNotas.service.NotaServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +14,19 @@ import java.util.Optional;
 @RequestMapping("/api/v1/notas")
 public class NotaController {
 
-    private final NotaService notaService;
+    private final NotaServiceImpl notaServiceImpl;
 
-    public NotaController(NotaService notaService) {
-        this.notaService = notaService;
+    public NotaController(NotaServiceImpl notaServiceImpl) {
+        this.notaServiceImpl = notaServiceImpl;
     }
 
     @GetMapping
-    public List<Nota> getNota(){ return notaService.getAll(); }
+    public List<Nota> getNota(){ return notaServiceImpl.getAll(); }
 
     @GetMapping("/{id}")
     @ResponseBody
     public Optional<Nota> getNotaID(@PathVariable("id") Long ID) {
-        Optional<Nota> nota = notaService.getById(ID);
+        Optional<Nota> nota = notaServiceImpl.getById(ID);
         //Añado el responseEntity para que no de errores en el postman
         return ResponseEntity.ok(nota).getBody();
     }
@@ -36,14 +36,14 @@ public class NotaController {
             @RequestParam Long usuarioId,
             @RequestBody @Valid Nota nota) {
 
-        return (Nota) notaService.guardarNotaUsuario(usuarioId,nota);
+        return (Nota) notaServiceImpl.guardarNotaUsuario(usuarioId,nota);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Nota> updateNota(@PathVariable("id") Long id, @RequestBody @Valid Nota nota) {
 
         try {
-            Nota updated = notaService.updateNota(nota, id);
+            Nota updated = notaServiceImpl.updateNota(nota, id);
             return ResponseEntity.ok(updated);
         } catch (NoSuchElementException e) {
             return ResponseEntity.notFound().build();
@@ -52,7 +52,7 @@ public class NotaController {
 
     @DeleteMapping("/{id}")
     public void deleteNota(@PathVariable("id") Long ID){
-        notaService.deleteById(ID);
+        notaServiceImpl.deleteById(ID);
     }
 
     //GET de BUSCAR
@@ -63,7 +63,7 @@ public class NotaController {
      @RequestParam(defaultValue = "asc") String orden
      ){
 
-        return notaService.buscarNotaSegunUsuario(usuarioId,sortBy,orden);
+        return notaServiceImpl.buscarNotaSegunUsuario(usuarioId,sortBy,orden);
     }
 
 }

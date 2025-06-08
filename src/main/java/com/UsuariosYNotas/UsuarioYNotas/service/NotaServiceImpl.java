@@ -1,20 +1,22 @@
 package com.UsuariosYNotas.UsuarioYNotas.service;
 
 import com.UsuariosYNotas.UsuarioYNotas.model.Nota;
+import com.UsuariosYNotas.UsuarioYNotas.model.Usuario;
 import com.UsuariosYNotas.UsuarioYNotas.repository.NotaRepository;
+import com.UsuariosYNotas.UsuarioYNotas.repository.UsuarioRepository;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
 
-public class NotaService extends AbstractCrudService{
+public class NotaServiceImpl extends AbstractCrudService{
 
     //Atributos
     private final NotaRepository notaRepository;
     private final UsuarioRepository usuarioRepository;
 
     //COSNTRUCTOR
-    public  NotaService(NotaRepository notaRepository,UsuarioRepository usuarioRepository){
+    public NotaServiceImpl(NotaRepository notaRepository, UsuarioRepository usuarioRepository){
         super(notaRepository);
         this.notaRepository = notaRepository;
         this.usuarioRepository = usuarioRepository;

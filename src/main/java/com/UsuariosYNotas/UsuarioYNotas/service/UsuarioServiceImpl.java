@@ -66,8 +66,8 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Ya existe un usuario con este email");
         }
 
-        String HashedPassword = pService.hashPassword(usuario.getpasswordHash());
-        usuario.setpasswordHash(HashedPassword);
+        String HashedPassword = pService.hashPassword(usuario.getPasswordHash());
+        usuario.setPasswordHash(HashedPassword);
 
         if (usuario.getNotas() == null) {
             usuario.setNotas(new ArrayList<>());
