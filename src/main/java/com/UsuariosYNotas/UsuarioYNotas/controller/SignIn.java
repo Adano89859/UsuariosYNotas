@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Size;
 public class SignIn {
 
     //ATRIBUTOS Y VALIDACIONES
-    @NotBlank(message = "Debe proporcionar un nombre de usuario")
     private String nombre;
 
     @NotBlank(message = "El email no puede quedar vacío")

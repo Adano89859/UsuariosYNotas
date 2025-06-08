@@ -5,10 +5,12 @@ import com.UsuariosYNotas.UsuarioYNotas.model.Usuario;
 import com.UsuariosYNotas.UsuarioYNotas.repository.NotaRepository;
 import com.UsuariosYNotas.UsuarioYNotas.repository.UsuarioRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class NotaServiceImpl extends AbstractCrudService{
 
     //Atributos

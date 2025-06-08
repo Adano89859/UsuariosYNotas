@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-public interface UsuarioService extends CrudService<Usuario, Long> {
+public interface UsuarioService extends CrudService_Repository<Usuario, Long> {
 
     public List<Usuario> listAll();
 

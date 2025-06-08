@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.Valid;
 
 import com.UsuariosYNotas.UsuarioYNotas.model.Usuario;
 import com.UsuariosYNotas.UsuarioYNotas.service.UsuarioService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/usuarios")
@@ -39,8 +39,8 @@ public class UsuarioControllerV1 {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public void getUsuarioId(@PathVariable("id") Long id) {
-        usuarioService.findById(id);
+    public Optional<Usuario> getUsuarioId(@PathVariable("id") Long id) {
+         return usuarioService.findById(id);
     }
 
     @PostMapping
@@ -49,7 +49,7 @@ public class UsuarioControllerV1 {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> UpdateUsuario(@PathVariable Long id, @RequestBody @Valid Usuario nuevoUsuario){
+    public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody @Valid Usuario nuevoUsuario){
         try {
             Usuario usuarioNuevo = usuarioService.update(id, nuevoUsuario);
             return ResponseEntity.ok(usuarioNuevo);
