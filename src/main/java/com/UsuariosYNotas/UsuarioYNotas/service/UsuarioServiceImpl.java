@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> implements UsuarioService {
+public class UsuarioServiceImpl extends AbstractCrudService<Usuario> implements UsuarioService {
 
     //ATRIBUTOS
     private final UsuarioRepository usuarioRepository;
@@ -29,6 +29,7 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario, Long> imple
 
     //CONSTRUCTOR
     public UsuarioServiceImpl(UsuarioRepository usuarioRepository, passService pService){
+        super(usuarioRepository);
         this.usuarioRepository = usuarioRepository;
         this.pService = pService;
     }
