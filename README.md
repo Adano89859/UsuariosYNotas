@@ -85,9 +85,11 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 
 # PRUEBAS Y TESTING FINAL (POSTMAN):
 * Prueba de conexión:
+  
 ![image](https://github.com/user-attachments/assets/a246bd2f-746c-415f-bae6-a2405e11a8d4)
 
 * Creación de usuarios:
+  
 ![image](https://github.com/user-attachments/assets/db75458c-176a-47e5-9f10-8acf36de6c23)
 ![image](https://github.com/user-attachments/assets/b479a807-2680-47a2-97f2-0a493fdd34df)
 
@@ -99,6 +101,7 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
   - Si el email no tiene un formato correcto dará error.
   - Si tenemos duplicados de usuarios o notas también dará error.
   - Si la nota no pertenece a un usuario también dará error.
+  
  ![image](https://github.com/user-attachments/assets/9798e6ca-c89a-4d7a-a11d-fe951c9c5ec5)
  ![image](https://github.com/user-attachments/assets/20a55acd-0b1b-47c5-94d7-918f16a827b6)
  ![image](https://github.com/user-attachments/assets/e89a7f9b-03f2-4e24-9e08-7d61dd5a939b)
@@ -111,6 +114,7 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
  ![image](https://github.com/user-attachments/assets/39e0a24c-7ccf-4ee2-9349-2d4cc6910581)
 
 * Asignar notas al usuario:
+  
  ![image](https://github.com/user-attachments/assets/813d363e-53b7-48b6-b221-e9bd0d711b1a)
  ![image](https://github.com/user-attachments/assets/a02c9809-3ddd-47f4-bc0d-778cd7aba749)
 
@@ -119,6 +123,7 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 ![image](https://github.com/user-attachments/assets/e7b82ef7-7ab7-4530-9cc1-969e229de3e7)
 
 * Buscar información de un usuario concreto:
+  
 ![image](https://github.com/user-attachments/assets/512f5776-12a0-480f-a3f0-85fd8f089787)
 
 
@@ -138,6 +143,7 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 ![image](https://github.com/user-attachments/assets/c8a07938-c322-4907-8235-7b08f63f4c9c)
 
 * Buscar nota concreta:
+  
 ![image](https://github.com/user-attachments/assets/33ba3b05-fdd1-4b41-b5c2-c7a887c9f525)
 
 
@@ -147,9 +153,11 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 ![image](https://github.com/user-attachments/assets/86430d9f-aee1-45ed-8638-fd4bdca26ffe)
 
 * Mostrar notas asociadas a un usuario:
+  
 ![image](https://github.com/user-attachments/assets/cdc4196c-9af5-42cd-9871-52ab9c45a5f9)
 
 * Registro, Log-in y hashing de contraseña de un usuario:
+  
 ![image](https://github.com/user-attachments/assets/f2362566-1eda-405c-946c-a379f51415fa)
 
 
@@ -159,7 +167,7 @@ con validaciones y cifrado de datos, en general, el proyecto nos ha resultado sa
 Log-in, hashing y el testeo general que fueron algo más tediosas, aunque fuera lo más complejo del proyecto, en general el proyecto se ha mostrado
 funcional, por lo que estamos muy satisfechos con la realización del mismo.
 
-#Creado por: Adán Romero y Kevin Sánchez (1ºB-DAM-PRO).
+# Creado por: Adán Romero y Kevin Sánchez (1ºB-DAM-PRO).
 
 
 
