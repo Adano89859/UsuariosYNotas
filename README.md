@@ -1,4 +1,4 @@
-# PROYECTO USUARIOS Y NOTAS UT6/UT7 DE PROGRAMACIÓN
+# PROYECTO: USUARIOS Y NOTAS UT6/UT7 DE PROGRAMACIÓN
 
 # DESCRIPCIÓN DEL PROYECTO:
 Este proyecto consiste en una API Rest básica de un block de notas en formato aplicación con conexión a una base de datos, Log-in, validaciones de credenciales de usuario, hashing de contraseñas y testeo previo final, en esta actividad se documentan:
