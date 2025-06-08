@@ -12,12 +12,12 @@ import jakarta.validation.constraints.Size;
 @Table(name = "Usuario")
 public class Usuario {
     
-    //Atributos
+    //ATRUBUTOS Y VALIDACIONES
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El nombre no pued estar vacío")
+    @NotBlank(message = "El nombre no puede estar vacío")
     @Size(max = 100, message = "El nombre debe tener como máximo 100 caracteres")
     @Column(name = "nombre", nullable = false)
     private String nombre;
@@ -36,10 +36,10 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Nota> notas;
 
-    //Métodos
-
+    //CONSTRUCTOR SIN PARÁMETROS
     public Usuario(){}
 
+    //CONSTRUCTOR PRINCIPAL
     public Usuario(Long id, String nombre, String email, String passwordHash, List<Nota> notas ){
         this.id = id;
         this.nombre = nombre;

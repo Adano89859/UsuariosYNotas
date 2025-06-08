@@ -14,15 +14,19 @@ import java.util.Optional;
 @RequestMapping("/api/v1/notas")
 public class NotaController {
 
+    //ATRIBUTOS
     private final NotaServiceImpl notaServiceImpl;
 
+    //CONSTRUCTOR
     public NotaController(NotaServiceImpl notaServiceImpl) {
         this.notaServiceImpl = notaServiceImpl;
     }
 
+    //LISTAR LAS NOTAS
     @GetMapping
     public List<Nota> getNota(){ return notaServiceImpl.getAll(); }
 
+    //BUSCAR NOTA POR ID
     @GetMapping("/{id}")
     @ResponseBody
     public Optional<Nota> getNotaID(@PathVariable("id") Long ID) {
@@ -31,6 +35,7 @@ public class NotaController {
         return ResponseEntity.ok(nota).getBody();
     }
 
+    //CREAR NOTA NUEVA
     @PostMapping
     public Nota createNota(
             @RequestParam Long usuarioId,
@@ -39,6 +44,7 @@ public class NotaController {
         return (Nota) notaServiceImpl.guardarNotaUsuario(usuarioId,nota);
     }
 
+    //ACTUALIZAR NOTA
     @PutMapping("/{id}")
     public ResponseEntity<Nota> updateNota(@PathVariable("id") Long id, @RequestBody @Valid Nota nota) {
 
@@ -50,12 +56,13 @@ public class NotaController {
         }
     }
 
+    //ELIMINAR NOTA POR ID
     @DeleteMapping("/{id}")
     public void deleteNota(@PathVariable("id") Long ID){
         notaServiceImpl.deleteById(ID);
     }
 
-    //GET de BUSCAR
+    //GET DE BUSCAR NOTAS POR UDUARIO
     @GetMapping("/buscarNotasPorUsuario")
     public List<Nota> buscarNotasPorUsuario
     (@RequestParam(required = false) Long usuarioId,

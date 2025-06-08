@@ -68,6 +68,11 @@ Este proyecto consiste en una API Rest básica de un block de notas en formato a
 
 SpringBoot inicializer: https://start.spring.io/index.html
 
+Postman: https://www.postman.com/downloads/
+
 # REPOSITORIO DE GITHUB:
 
 Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
+
+# PRUEBAS Y TESTING FINAL (POSTMAN):
+
