@@ -3,6 +3,9 @@ package com.UsuariosYNotas.UsuarioYNotas.model;
 import java.util.List;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "Usuario")
@@ -13,12 +16,18 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El nombre no pued estar vacío")
+    @Size(max = 100, message = "El nombre debe tener como máximo 100 caracteres")
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    @NotBlank(message = "El email no debe estar vacío")
+    @Email(message = "Introduzca un email válido")
     @Column(name = "email", unique = true, nullable = false)
     private String email;
 
+    @NotBlank(message = "Debe haber una contraseña")
+    @Size(min = 8, message = "La contraseña debe tenr almenos 8 caracteres")
     @Column(name = "contrasena", nullable = false)
     private String passwordHash;
 
@@ -72,11 +81,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getpasswordHash(){
+    public String getPasswordHash(){
         return passwordHash;
     }
 
-    public void setpasswordHash(String passwordHash){
+    public void setPasswordHash(String passwordHash){
         this.passwordHash = passwordHash;
     }
 }

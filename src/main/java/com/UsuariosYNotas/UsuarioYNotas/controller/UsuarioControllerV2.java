@@ -27,8 +27,8 @@ public class UsuarioControllerV2 {
     @PostMapping("/sign-in")
     public ResponseEntity<Usuario> signIn(@Valid @RequestBody SignIn signIn) {
         Usuario usuario = new Usuario();
-        usuario.setEmail(signIn.getemail());
-        usuario.setpasswordHash(signIn.getPassword());
+        usuario.setEmail(signIn.getEmail());
+        usuario.setPasswordHash(signIn.getPassword());
 
         Usuario creado = usuarioService.registrarUsuario(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(creado);
