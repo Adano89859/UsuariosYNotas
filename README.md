@@ -82,6 +82,7 @@ Postman: https://www.postman.com/downloads/
 # REPOSITORIO GITHUB:
 Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 
+
 # PRUEBAS Y TESTING FINAL (POSTMAN):
 * Prueba de conexión:
 ![image](https://github.com/user-attachments/assets/a246bd2f-746c-415f-bae6-a2405e11a8d4)
