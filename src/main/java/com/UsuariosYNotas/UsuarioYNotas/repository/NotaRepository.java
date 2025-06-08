@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface NotaRepository extends JpaRepository<Nota, Long> {
+    //MÉTODO PARA BUSCAR USUARIO POR ID
     List<Nota> findByUsuarioId(Long usuarioID, Sort sort);
 }

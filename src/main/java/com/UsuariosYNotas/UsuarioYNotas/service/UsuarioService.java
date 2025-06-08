@@ -6,8 +6,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Interfaz que aplicará las peticiones del controller en base a la lógica implementada
+ * en la implementación del servicio del usuario (UsuarioServiceImpl)
+*/
 public interface UsuarioService extends CrudService_Repository<Usuario, Long> {
 
+    // Métodos de petición Servicio-Controlador
     public List<Usuario> listAll();
 
     public Usuario save(Usuario usuario);

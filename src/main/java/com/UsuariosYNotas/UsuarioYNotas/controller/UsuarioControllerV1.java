@@ -34,20 +34,24 @@ public class UsuarioControllerV1 {
         this.usuarioService = usuarioService;
     }
 
+    //LISTAR USUARIOS
     @GetMapping
     public List<Usuario> getUsuarios(){return usuarioService.listAll();}
 
+    //ENCONTRAR USUARIOS POR ID
     @GetMapping("/{id}")
     @ResponseBody
     public Optional<Usuario> getUsuarioId(@PathVariable("id") Long id) {
          return usuarioService.findById(id);
     }
 
+    //CREAR USUARIO
     @PostMapping
     public Usuario crearUsuario(@RequestBody @Valid Usuario usuario){
         return usuarioService.save(usuario);
     }
 
+    //ACTUALIZAR USUARIO
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @RequestBody @Valid Usuario nuevoUsuario){
         try {
@@ -58,6 +62,7 @@ public class UsuarioControllerV1 {
         }
     }
 
+    //ELIMINAR USUARIO POR ID
     @DeleteMapping("/{id}")
     public void deleteUsuario(@PathVariable("id") Long id){
         usuarioService.deleteById(id);
