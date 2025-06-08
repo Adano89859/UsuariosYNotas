@@ -167,7 +167,7 @@ con validaciones y cifrado de datos, en general, el proyecto nos ha resultado sa
 Log-in, hashing y el testeo general que fueron algo más tediosas, aunque fuera lo más complejo del proyecto, en general el proyecto se ha mostrado
 funcional, por lo que estamos muy satisfechos con la realización del mismo.
 
-# Creado por: Adán Romero y Kevin Sánchez (1ºB-DAM-PRO).
+# Creado por: Adán Romero y Kevin Sánchez (1ºB-DAM-PRO) 2024-25.
 
 
 
