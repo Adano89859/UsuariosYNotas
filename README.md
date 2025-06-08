@@ -107,6 +107,7 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
  ![image](https://github.com/user-attachments/assets/a02c9809-3ddd-47f4-bc0d-778cd7aba749)
 
 * Mostrar usuarios:
+
 ![image](https://github.com/user-attachments/assets/e7b82ef7-7ab7-4530-9cc1-969e229de3e7)
 
 * Buscar información de un usuario concreto:
@@ -114,15 +115,18 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 
 
 * Actualizar usuarios:
+
 ![image](https://github.com/user-attachments/assets/3ff8dcde-4582-474b-8600-7d6ece82c889)
 
 
 * Borrar usuarios:
+
 ![image](https://github.com/user-attachments/assets/fc283742-87c0-42f5-b8c7-fab5a7c420e1)
 ![image](https://github.com/user-attachments/assets/481432ad-641e-4816-ab62-87451a6170a2)
 
 
 * Mostrar notas:
+
 ![image](https://github.com/user-attachments/assets/c8a07938-c322-4907-8235-7b08f63f4c9c)
 
 * Buscar nota concreta:
@@ -130,6 +134,7 @@ Enlace a GitHub: https://github.com/Adano89859/UsuariosYNotas.git
 
 
 * Eliminar notas:
+
 ![image](https://github.com/user-attachments/assets/c4de2b43-2079-4e5f-ada1-dd5e6db6ac34)
 ![image](https://github.com/user-attachments/assets/86430d9f-aee1-45ed-8638-fd4bdca26ffe)
 
