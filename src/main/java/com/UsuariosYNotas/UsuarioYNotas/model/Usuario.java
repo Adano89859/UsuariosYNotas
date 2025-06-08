@@ -2,6 +2,7 @@ package com.UsuariosYNotas.UsuarioYNotas.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -31,6 +32,7 @@ public class Usuario {
     @Column(name = "contrasena", nullable = false)
     private String passwordHash;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Nota> notas;
 

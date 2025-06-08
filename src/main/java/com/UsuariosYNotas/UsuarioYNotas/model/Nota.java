@@ -1,5 +1,6 @@
 package com.UsuariosYNotas.UsuarioYNotas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -32,8 +33,8 @@ public class Nota {
 
     //Tengo que poner "ManyToOne" porque muchas notas pueden pertenecer a un mismo usuario
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "usuario_id")
-    @NotNull(message = "La Nota debe tener un usuario propietario")
     private Usuario usuario;
 
 

@@ -86,7 +86,8 @@ public class UsuarioServiceImpl extends AbstractCrudService<Usuario> implements 
         }
 
         Usuario existente = usuarioRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encuentra el usuario seleccionado"));
-        BeanUtils.copyProperties(usuario, existente, "id");
+        //Excluso el id y las notas
+        BeanUtils.copyProperties(usuario, existente, "id", "notas");
         return usuarioRepository.save(existente);
     }
 }
